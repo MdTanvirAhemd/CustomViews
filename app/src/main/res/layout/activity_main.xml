@@ -16,10 +16,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.ahmed.customviews.MyFirstCustomView
-
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-     android:id="@+id/my_view"/>
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <com.ahmed.customviews.SignFromView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:customTextSize="26"
+        app:initialEmail="my@email.com"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

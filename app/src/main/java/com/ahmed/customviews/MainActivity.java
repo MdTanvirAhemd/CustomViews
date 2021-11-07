@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -11,30 +12,31 @@ public class MainActivity extends AppCompatActivity {
 
     MyFirstCustomView customView;
     TextView textView;
+    FrameLayout flContainer;
+
+    String userEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        customView = findViewById(R.id.my_view);
         textView = findViewById(R.id.txt_hello_world);
+        flContainer = findViewById(R.id.fl_container);
 
-        customView.setOnClickListener(new View.OnClickListener() {
+        SignFromView signFromView   = new SignFromView(getBaseContext());
+        signFromView.setOnGetDataClicked(new SignFromView.OnGetDataClicked() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        customView.setOnButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                textView.setTextColor(getResources().getColor(R.color.teal_200));
+            public void onButtonClicked(String email) {
+            userEmail = email;
+                Toast.makeText(MainActivity.this, userEmail + "______________",Toast.LENGTH_LONG).show();
 
             }
         });
+        flContainer.addView(signFromView);
+        flContainer.removeView(signFromView);
+
+
+
     }
-
-
-
 }
